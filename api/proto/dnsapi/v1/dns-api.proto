@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package opentaxidns.v1.dns_api;
+
+option go_package = "github.com/Open-Taxi-Community/open-taxi-dns/pkg/opentaxidns/v1;opentaxidns;";
+
+// Requests
+message AddDomainRequest {
+  string serverDomain = 1;
+}
+
+message GetDomainRequest {
+  string serverDomain = 1;
+}
+
+message RemoveDomainRequest {
+  string serverDomain = 1;
+}
+
+// Responses
+message AddDomainResponse {
+}
+
+message GetDomainResponse {
+}
+
+message RemoveDomainResponse {
+}
+
+
+// Compliance service
+//
+// The compliance service is used to put a drivers server url into
+// the OpenTaxi DNS.  This service also covers the compliance aspect
+// to verify all the required endpoints of the OpenTaxi Standard has
+// been met.
+service ComplianceService {
+  // Add a new domain
+  //
+  // Adding a new domain will start the automated end point testing.
+  // If all tests pass, the domain will be added to the OpenTaxi DNS.
+  // If a test fails, a compliance test status will be returned stating
+  // which test failed.
+  rpc AddDomain(AddDomainRequest) returns (AddDomainResponse) {
+  }
+  // Get a domain
+  //
+  // This is used to check if a domain is in the OpenTaxi DNS
+  rpc GetDomain(GetDomainRequest) returns (GetDomainResponse) {
+  }
+  // Remove a domain
+  //
+  // This removes a domain from the OpenTaxi DNS
+  rpc RemoveDomain(RemoveDomainRequest) returns (RemoveDomainResponse) {
+  }
+}

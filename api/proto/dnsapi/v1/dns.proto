@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package dnsapi.v1.dns;
+
+option go_package = "github.com/Open-Taxi-Community/open-taxi-dns/pkg/dnsapi/v1;dns;";
+
+// Requests
+message AddDomainRequest {
+  string serverDomain = 1;
+}
+
+message GetDomainRequest {
+  string serverDomain = 1;
+}
+
+message RemoveDomainRequest {
+  string serverDomain = 1;
+}
+
+// Responses
+message AddDomainResponse {
+}
+
+message GetDomainResponse {
+}
+
+message RemoveDomainResponse {
+}
+
+
+// DNS service
+//
+// The DNS service is used to interact with the OpenTaxi DNS server.
+service DnsService {
+  // Add a new domain
+  //
+  // Adding a new domain will push the domain to the driver server
+  // compliance blockchain.  Other driver servers will then be able
+  // to resolve the domain and make requests to the domain to begin
+  // the compliance process.
+  rpc AddDomain(AddDomainRequest) returns (AddDomainResponse) {
+  }
+  // Get a domain
+  //
+  // This is used to check if a domain is in the OpenTaxi DNS
+  rpc GetDomain(GetDomainRequest) returns (GetDomainResponse) {
+  }
+  // Remove a domain
+  //
+  // This removes a domain from the OpenTaxi DNS
+  rpc RemoveDomain(RemoveDomainRequest) returns (RemoveDomainResponse) {
+  }
+}
