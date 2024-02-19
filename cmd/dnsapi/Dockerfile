@@ -2,9 +2,9 @@ FROM golang:1.18 as build
 
 WORKDIR /go/src/server
 
-COPY .  .
+COPY ../../internal/dnsapi  .
 COPY internal/dnsapi/server .
-ADD .  /go/src/github.com/Open-Taxi-Community/open-taxi-dns
+ADD ../../internal/dnsapi  /go/src/github.com/Open-Taxi-Community/open-taxi-dns
 RUN GOFLAGS=-mod=mod go generate ./...
 
 #RUN go build -v -o server .
