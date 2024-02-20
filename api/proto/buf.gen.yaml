@@ -2,10 +2,14 @@ version: v1
 plugins:
   - name: go
     out: ../../pkg/
-    opt: paths=source_relative
+    opt:
+      - paths=import
+      - module=github.com/Open-Taxi-Community/open-taxi-dns/pkg
   - name: connect-go
     out: ../../pkg/
-    opt: paths=source_relative
+    opt:
+      - paths=import
+      - module=github.com/Open-Taxi-Community/open-taxi-dns/pkg
 
   - plugin: es
     out: ../../src/typescript
