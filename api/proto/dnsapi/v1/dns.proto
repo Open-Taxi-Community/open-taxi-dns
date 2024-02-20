@@ -1,20 +1,20 @@
 syntax = "proto3";
 
-package dnsapi.v1.dns;
+package dnsapi.v1;
 
 option go_package = "github.com/Open-Taxi-Community/open-taxi-dns/pkg/dnsapi/v1;dns;";
 
 // Requests
 message AddDomainRequest {
-  string serverDomain = 1;
+  string server_domain = 1;
 }
 
 message GetDomainRequest {
-  string serverDomain = 1;
+  string server_domain = 1;
 }
 
 message RemoveDomainRequest {
-  string serverDomain = 1;
+  string server_domain = 1;
 }
 
 // Responses

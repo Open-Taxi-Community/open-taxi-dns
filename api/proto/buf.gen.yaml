@@ -1,0 +1,35 @@
+version: v1
+plugins:
+  - name: go
+    out: ../../pkg/
+    opt: paths=source_relative
+  - name: connect-go
+    out: ../../pkg/
+    opt: paths=source_relative
+
+  - plugin: es
+    out: ../../src/typescript
+    opt:
+      - target=ts
+      - import_extension=none
+  - plugin: connect-es
+    out: ../../src/typescript
+    opt:
+      - target=ts
+      - import_extension=none
+
+  - plugin: buf.build/connectrpc/kotlin
+    out: ../../src/kotlin
+  - plugin: buf.build/protocolbuffers/java
+    out: ../../src/kotlin
+
+  - plugin: buf.build/connectrpc/swift
+    opt:
+      - GenerateAsyncMethods=true
+      - GenerateCallbackMethods=true
+      - Visibility=Public
+    out: ../../src/swift
+  - plugin: buf.build/apple/swift
+    opt:
+      - Visibility=Public
+    out: ../../src/swift
