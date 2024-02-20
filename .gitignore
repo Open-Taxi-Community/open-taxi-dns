@@ -19,3 +19,8 @@
 
 # Go workspace file
 go.work
+
+# TypeScript/Node.js specific
+node_modules/
+npm-debug.log
+yarn-error.log
